@@ -19,7 +19,17 @@ python3 -m pip install pandas odfpy
 
 ## Steps
 
-In this example I start with Dutch RD-coördinaatpunten data from https://www.nsgi.nl/documents/1888506/3754578/20220111+Lijst+actuele+kernnetpunten+voor+RDinfo.ods/ae6fecb4-e145-8d93-8a91-fc578dd18d52?t=1641991881508
+Clean up old files
+
+```
+rm data/input.csv data/output.csv "data/2022-08 Actuele kernnetpunten Rijksdriehoeksmeting.ods"
+```
+
+In this example I start with Dutch RD-coördinaatpunten data `2022-08 Actuele kernnetpunten Rijksdriehoeksmeting.ods` that can be downloaded from https://www.nsgi.nl/documents/1888506/3754578/20220111+Lijst+actuele+kernnetpunten+voor+RDinfo.ods/ae6fecb4-e145-8d93-8a91-fc578dd18d52
+
+```
+curl https://www.nsgi.nl/documents/1888506/3754578/20220111+Lijst+actuele+kernnetpunten+voor+RDinfo.ods/ae6fecb4-e145-8d93-8a91-fc578dd18d52 -o "data/2022-08 Actuele kernnetpunten Rijksdriehoeksmeting.ods"
+```
 
 This file comes in OpenDocument Spreadsheet (ods) file format [1]. More common is probably getting csv or Esri Shapefile as input.
 

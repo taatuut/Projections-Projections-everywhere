@@ -31,7 +31,7 @@ field_names = [field.GetName() for field in input_layer.schema]
 # Create the output CSV file and write the header
 output_dataset = open(output_file, 'w', newline='')
 csv_writer = csv.writer(output_dataset, delimiter=';', quotechar='"', quoting=csv.QUOTE_ALL)
-csv_writer.writerow(field_names + ['x', 'y', 'lon', 'lat'])
+csv_writer.writerow(field_names + ['UTM x [m]', 'UTM y [m]', 'lon', 'lat'])
 
 # Iterate over features in the input layer
 # use separate 'split' features for two instances of the input layer
