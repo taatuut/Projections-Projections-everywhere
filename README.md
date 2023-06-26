@@ -19,12 +19,14 @@ python3 -m pip install pandas odfpy
 
 ## Steps
 
+1.
 Clean up old files
 
 ```
 rm data/input.csv data/output.csv "data/2022-08 Actuele kernnetpunten Rijksdriehoeksmeting.ods"
 ```
 
+2.
 In this example I start with Dutch RD-coördinaatpunten data `2022-08 Actuele kernnetpunten Rijksdriehoeksmeting.ods` that can be downloaded from https://www.nsgi.nl/documents/1888506/3754578/20220111+Lijst+actuele+kernnetpunten+voor+RDinfo.ods/ae6fecb4-e145-8d93-8a91-fc578dd18d52
 
 ```
@@ -33,7 +35,7 @@ curl https://www.nsgi.nl/documents/1888506/3754578/20220111+Lijst+actuele+kernne
 
 This file comes in OpenDocument Spreadsheet (ods) file format [1]. More common is probably getting csv or Esri Shapefile as input.
 
-1.
+3.
 Create `csv` from `ods` file
 
 ```
@@ -42,7 +44,7 @@ python3 ods2csv.py
 
 Result is file `input.csv`.
 
-2.
+4.
 Transform `RD - EPSG:28992` to `UTM Zone 32N - EPSG:23032` and `WGS84 - EPSG:4326`
 
 ```
@@ -53,10 +55,10 @@ Result is file `output.csv`.
 
 NOTE: Very important is not to do 'serial reprojections'!! E.g. 28992 to 23032 to 4326. Correct way is to determine the original Coordinate Reference System (CRS) for the source. In this case that is `RD - EPSG:28992`, `ETRS89` is the derived CRS here (a nice read is on this topic is 'De geodetische referentiestelsels van Nederland - Geodetic reference frames in the Netherlands' [5]). Use the source CRS every time for conversion to another system. E.g. 28992 to 23032, 28992 to 4326 etc. Also check how many decimals make sense in the resulting output.
 
-3.
+5.
 TODO: Describe the role of the vrt file.
 
-4.
+6.
 Could do further processing like conversion to geojson, ...
 
 ## Check result file
