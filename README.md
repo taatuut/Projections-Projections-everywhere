@@ -20,10 +20,11 @@ python3 -m pip install pandas odfpy
 ## Steps
 
 In this example I start with Dutch RD-coördinaatpunten data from https://www.nsgi.nl/documents/1888506/3754578/20220111+Lijst+actuele+kernnetpunten+voor+RDinfo.ods/ae6fecb4-e145-8d93-8a91-fc578dd18d52?t=1641991881508
+
 This file comes in OpenDocument Spreadsheet (ods) file format [1]. More common is probably getting csv or Esri Shapefile as input.
 
 1.
-Create csv from ods file
+Create `csv` from `ods` file
 
 ```
 python3 ods2csv.py
@@ -32,7 +33,7 @@ python3 ods2csv.py
 Result is file `input.csv`.
 
 2.
-Transform RD EPSG:28992 to UTM Zone 32N EPSG:23032 and WGS84 EPSG:4326
+Transform `RD - EPSG:28992` to `UTM Zone 32N - EPSG:23032` and `WGS84 - EPSG:4326`
 
 ```
 python3 ogr_proj.py
@@ -40,17 +41,17 @@ python3 ogr_proj.py
 
 Result is file `output.csv`.
 
-NOTE: Very important is not to do 'serial reprojections'!! E.g. 28992 to 23032 to 4326. Determine original Coordinate Reference System (CRS)for source, in this case that is RD or EPSG:28992, ETRS89 is derived CRS here (a nice read is on this topic is 'De geodetische referentiestelsels van Nederland - Geodetic reference frames in the Netherlands' [5]). Use the source CRS every time for conversion to another system. E.g. 28992 to 23032, 28992 to 4326 etc. Also check how many deciamls make sense in the resulting output.
+NOTE: Very important is not to do 'serial reprojections'!! E.g. 28992 to 23032 to 4326. Correct way is to determine the original Coordinate Reference System (CRS) for the source. In this case that is `RD - EPSG:28992`, `ETRS89` is the derived CRS here (a nice read is on this topic is 'De geodetische referentiestelsels van Nederland - Geodetic reference frames in the Netherlands' [5]). Use the source CRS every time for conversion to another system. E.g. 28992 to 23032, 28992 to 4326 etc. Also check how many decimals make sense in the resulting output.
 
 3.
-TODO: Describe role of vrt file
+TODO: Describe the role of the vrt file.
 
 4.
-Could do further processing like convert to geojson, ...
+Could do further processing like conversion to geojson, ...
 
 ## Check result file
 
-Go to https://geojson.io/ [2]
+Go to https://geojson.io/ [2], using QGIS or similar.
 
 Click [ Open ] and select `output.csv`. Will load the file assuming `lat` and `lon` to contain WGS84 coordinates. Can export to geojson and more.
 

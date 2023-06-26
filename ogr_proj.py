@@ -2,8 +2,8 @@ from osgeo import ogr, osr
 import csv
 
 # Define the input and output file paths
-input_file = 'input.vrt'
-output_file = 'output.csv'
+input_file = 'data/input.vrt'
+output_file = 'data/output.csv'
 
 # Create a spatial reference for EPSG:28992 (RD New)
 source_sr_28992 = osr.SpatialReference()
@@ -51,10 +51,10 @@ for feature_23032, feature_4326 in zip(input_layer, input_layer):
     geometry_28992_4326.Transform(transform_28992_4326)
 
     # Get the transformed coordinates
-    x = geometry_28992_23032.GetX()
-    y = geometry_28992_23032.GetY()
-    lat = geometry_28992_4326.GetX()
-    lon = geometry_28992_4326.GetY()
+    x = round(geometry_28992_23032.GetX(), 4)
+    y = round(geometry_28992_23032.GetY(), 4)
+    lat = round(geometry_28992_4326.GetX(), 5)
+    lon = round(geometry_28992_4326.GetY(), 5)
 
     # Write the transformed feature to the output CSV file
     csv_writer.writerow(attributes + [x, y, lon, lat])

@@ -1,6 +1,6 @@
 <OGRVRTDataSource>
     <OGRVRTLayer name="input">
-        <SrcDataSource>input.csv</SrcDataSource>
+        <SrcDataSource>data/input.csv</SrcDataSource>
         <SrcLayer>input</SrcLayer>
         <GeometryType>wkbPoint</GeometryType>
         <LayerSRS>EPSG:28992</LayerSRS> 
